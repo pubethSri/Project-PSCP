@@ -7,7 +7,7 @@ from django.http import HttpResponse
 
 def index(request):
     now = datetime.now()
-    time = "{:>02s}:00:00".format(str(random.randint(1, 23)))
+    time = "{:>02s}:00:00".format(str(random.randint(0, 23)))
     url = "https://data.tmd.go.th/nwpapi/v1/forecast/area/place"
 
     querystring = {"domain":"2", "province":"กรุงเทพมหานคร", "amphoe":"ลาดกระบัง", "tambon":"ลำปลาทิว", "fields":"tc,rh,cond", "starttime":"2023-09-17T"+time}
