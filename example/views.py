@@ -18,13 +18,14 @@ def index(request):
 
     response = requests.request("GET", url, headers=headers, params=querystring)
     information = json.loads(response.text)
+    display = information.get("data")[2]
     now = datetime.now()
     html = f'''
     <html>
         <body>
             <h1>Hello from Vercel!</h1>
             <p>The current time is { now }.</p>
-            <p>The current Weather condition is { information.get("data")[2] }.</p>
+            <p>The current Weather condition is { display }.</p>
             <h2>T4E</h2>
         </body>
     </html>
