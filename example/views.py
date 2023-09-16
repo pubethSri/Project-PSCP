@@ -26,7 +26,7 @@ def index(request):
         <body>
             <h1>Hello from Vercel!</h1>
             <p>The current time is { now }.</p>
-            <p>The current Weather condition is { display }.</p>
+            <p>The 17 Sep 2023 Weather condition is { display }.</p>
             <h2>T4E</h2>
         </body>
     </html>
