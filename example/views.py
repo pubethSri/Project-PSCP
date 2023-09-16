@@ -18,7 +18,7 @@ def index(request):
 
     response = requests.request("GET", url, headers=headers, params=querystring)
     information = json.loads(response.text)
-    display = information.get("WeatherForecasts")[1]
+    display = information.get("WeatherForecasts")[0].get("forecasts")[0]
     now = datetime.now()
     html = f'''
     <html>
