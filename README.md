@@ -7,4 +7,3 @@ website : [click here](https://project-pscp.vercel.app/)
 |66070030|[FriedStan](https://github.com/FriedStan), [KuhnphOn](https://github.com/KuhnphOn)|จิราธิป กาปัญญา|
 |66070093|[Danny2Forever](https://github.com/Danny2Forever)|ธีรภัทร ทวนพรมราช|
 |66070158|[pubethSri](https://github.com/pubethSri)|ภูเบศ ศรีวัฒนา|
-|66070158|[pubethSri](https://github.com/pubethSri)|ภูเบศ ศรีวัฒนา|
