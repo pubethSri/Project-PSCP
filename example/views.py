@@ -8,6 +8,8 @@ def index(request):
     html = render(request, 'index.html', data)
     return html
 
+
 def request(request):
-    print(request.GET.get('test'))
-    return JsonResponse({'test_confirmed': True})
+    printout = request.GET.get('sent_data')
+    print(printout)
+    return JsonResponse({'input': printout})

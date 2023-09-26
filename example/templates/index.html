@@ -2,10 +2,12 @@
 <html>
         <body>
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-            <script src="{% static 'app.js' %}"></script>     
+            <script src="{% static 'app.js' %}"></script>
             <h1>Hello from Vercel!</h1>
             <p>The current time is {{now}}.</p>
             <p>The tomorrow ({{day}}) Weather condition is {{display}}.</p>
-            <h2>T4E</h2> 
+            <h2 id="change">T4E</h2> 
+            <input type="text" id="name">
+            <button onclick="getRequest()">Click me</button>
         </body>
 </html>
