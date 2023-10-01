@@ -66,7 +66,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'cloth_dryer.wsgi.application'
+WSGI_APPLICATION = 'cloth_dryer.wsgi.app'
 
 
 # Database
