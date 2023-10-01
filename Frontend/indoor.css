@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-weight: 100;
+    /* cursor: ; */
+}
+
+body, html{
+    height: 100%;
+}
+
+.mouse-hover:hover {
+    opacity: 1;
+    transition: all 0.85s;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    color: rgb(255,255,255, 1);
+}
+/* .pointer {
+    cursor: pointer;
+} */
+
+/* 
+.prevent-select {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  } */
+
+/* .drop-down{
+    
+} */
+
+.bg{
+    background: url("/images//WebMaterial/indoor/BG.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+
+}
+
+#drop-down-container {
+    /* display: flex; */
+    background: rgb(0, 0, 0, 0);
+    transition: all 1s;
+    height: 100vh;
+}
+
+#province-show{
+    font-size: 5vw;
+    color: rgb(255,255,255, 0.3);
+
+    width: 200vh;
+    transition: all 1s;
+    z-index: 1;
+}
+
+#amphoe-show {
+    font-size: 3vw;
+    color: rgb(255,255,255, 0.3);
+    transition: all 1s;
+    z-index: 0;
+    
+}
+
+.trakra{
+    bottom: 0%;
+}

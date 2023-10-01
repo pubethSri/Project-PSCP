@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     overflow: hidden;
+    
 }
 
 body, html{
@@ -40,7 +41,7 @@ body, html{
     width: 50%;
     background: rgb(0, 0, 0, 0.8);
     transition: all 1s;
-    
+
 }
 
 .hover-left:hover{
