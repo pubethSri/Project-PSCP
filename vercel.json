@@ -8,13 +8,13 @@
       "src": "build.sh",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "staticfiles"
+        "distDir": "staticfiles_build"
       }
     }
   ],
   "routes": [
     {
-      "src": "/static/(.*)",
+      "src": "/weather_report/static/(.*)",
       "dest": "/static/$1"
     },
     {
