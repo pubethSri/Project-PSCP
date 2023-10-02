@@ -8398,7 +8398,6 @@ amphoe_select = (num) => {
 	document.getElementById("drop-down-container").style.background = "rgb(0, 0, 0, 0)"
     document.getElementById("drop-down-container").style.overflowY = "hidden";
 	document.getElementById("trakra").style.zIndex = "20";
-	
 };
 
 click_amphoe = () =>{

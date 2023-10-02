@@ -46,6 +46,9 @@ click_on = () => {
     document.getElementById("drop-down-container").style.overflowY = "scroll";
     document.getElementById("drop-down-container").style.background = "rgb(0, 0, 0, 0.6)";
     document.getElementById("trakra").style.zIndex = "-20";
+    document.getElementById("amphoe-select").style.display = "none";
+    sort()
+
     for (let i = 0; i < province_list.length; i++){
         document.getElementById("province-show").innerHTML +=
         `
@@ -56,6 +59,45 @@ click_on = () => {
         ;
     };
 };
+
+click_reset = () => {
+    location.reload();
+}
+
+sort = () => {
+    var delayInMilliseconds = 500;
+    var timmer= setTimeout(function() {
+        console.log(input)
+    }, delayInMilliseconds)
+    let input = ""
+    let ready_click = true
+    document.addEventListener('keypress', function(e) {
+        // console.log(e)
+        input += e.key
+        window.clearTimeout(timmer);
+        ready_click = true
+        for (let i = 0; i < province_list.length; i++){
+            if (!province_list[i].includes(input)){
+                document.getElementById("mark-province"+i).style.display = "none";
+            } else {
+                ready_click = false
+            }
+        };
+        timmer= setTimeout(function() {
+            console.log(input)
+            // console.log(ready_click)
+            input = ""
+            if (ready_click){
+            document.getElementById("drop-down-container").innerHTML = 
+                `
+                <h1>**Click The Screen**</h1>
+                `;
+            document.getElementById("drop-down-container").setAttribute('onclick', 'click_reset()')
+            }
+        }, delayInMilliseconds)
+
+    });
+}
 
 // --------------------------------- Amphoe --------------------------------------
 // const amphoe = require('./thai_amphures.json');
