@@ -9,16 +9,11 @@ const province_list =['กรุงเทพมหานคร', 'สมุท�
                     'กระบี่', 'พังงา', 'ภูเก็ต', 'สุราษฎร์ธานี', 'ระนอง', 'ชุมพร', 'สงขลา', 'สตูล', 'ตรัง', 'พัทลุง', 'ปัตตานี', 'ยะลา', 
                     'นราธิวาส', 'บึงกาฬ']
 
-
 document.getElementById("province-show").innerHTML = 
 `
 <h1 id="province-selected" class="mouse-hover" onclick="click_on()"> ${province_list[num]} </h1>
 `;
 document.getElementById("province-selected").value = 1;
-
-// hover_font = () => {
-//     document.getElementById("province-show").style.color = "rgb(255, 255, 255, )";
-// };
 
 select_province = (num) => {
     province = document.getElementById("mark-province" + String(num)).innerHTML;
@@ -26,14 +21,12 @@ select_province = (num) => {
     `
     <h1 id="province-selected" class="mouse-hover" style="cursor: pointer;" onclick="click_on()"> ${province} </h1>
     `;
-
     document.getElementById("province-selected").value = num+1;
     document.getElementById("drop-down-container").style.background = "rgb(0, 0, 0, 0)"
     document.getElementById("amphoe-show").style.display = "block"
     document.getElementById("drop-down-container").style.overflowY = "hidden";
     document.getElementById("trakra").style.zIndex = "20"
-    console.log(num);
-
+    console.log(province);
     let province_id = document.getElementById("province-selected").value;
     amphoe_list = []
     for (let i=0 ; i < amphoe.length; i++){
@@ -41,13 +34,11 @@ select_province = (num) => {
 		amphoe_list.push(amphoe[i]['name_th'])
 		}
     }
-    console.log(amphoe_list)
-
     document.getElementById("amphoe-show").innerHTML =
     `
     <h1 id="amphoe-select" class="mouse-hover" onclick="click_amphoe()">${amphoe_list[0]}</h1>
     `;
-
+    console.log(amphoe_list[0]);
 };
 
 click_on = () => {

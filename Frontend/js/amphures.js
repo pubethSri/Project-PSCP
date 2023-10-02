@@ -1,4 +1,3 @@
-
 const amphoe = [
 	{
 	  "id": 8607,
@@ -8392,33 +8391,27 @@ amphoe_select = (num) => {
 	let amphoe_mark = document.getElementById("mark-select" + String(num)).innerHTML;
 	console.log(amphoe_mark);
 	document.getElementById("province-show").style.display = "block";
-	
 	document.getElementById("amphoe-show").innerHTML = 
 	`
 	<h1 id="amphoe-select" class="mouse-hover" onclick="click_amphoe()">${amphoe_mark}</h1>
 	`
 	document.getElementById("drop-down-container").style.background = "rgb(0, 0, 0, 0)"
     document.getElementById("drop-down-container").style.overflowY = "hidden";
-	
 	document.getElementById("trakra").style.zIndex = "20";
+	
 };
 
 click_amphoe = () =>{
 	document.getElementById("trakra").style.zIndex = "-20";
 	document.getElementById("province-show").style.display = "none";
-	document.getElementById("amphoe-show").innerHTML = ""
-    // display: none;
-    
+	document.getElementById("amphoe-show").innerHTML = "" 
     document.getElementById("drop-down-container").style.overflowY = "scroll";
     document.getElementById("drop-down-container").style.background = "rgb(0, 0, 0, 0.6)";
-	
 	for (let i=0 ; i < amphoe_list.length; i++){
 		document.getElementById("amphoe-show").innerHTML += 
 		`
 		<h1 id="mark-select${i}" class="mouse-hover" onclick="amphoe_select(${i})"> ${amphoe_list[i]} </h1>
 		`
     }
-    console.log(amphoe_list)
 };
 
-// console.log(amphoe)

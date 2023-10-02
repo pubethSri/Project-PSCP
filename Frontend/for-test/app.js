@@ -1,23 +1,17 @@
-var get_input = ""
-
-const reset = () => {
-    console.log(get_input)
-    get_input = ""
-}
-
-var timer = setInterval(() => {
-    reset()
-}, 2000);
-clearInterval(timer)
+var delayInMilliseconds = 1000; //1 second
+var Timmer= setTimeout(function() {
+    console.log(input)
+}, delayInMilliseconds)
+let input = ""
 
 document.addEventListener('keypress', function(e) {
-
-    // console.log(e);
-    get_input += e.key
-    document.addEventListener('keydown', function(e) {
-        timer = setInterval(() => {
-            reset()
-        }, 2000);
-    });
-
+    // console.log(e)
+    input += e.key
+    window.clearTimeout(Timmer);
+    Timmer= setTimeout(function() {
+        console.log(input)
+        input = ""
+    }, delayInMilliseconds)
+    
+    
 });
