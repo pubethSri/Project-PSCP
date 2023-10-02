@@ -1,19 +1,26 @@
 {% load static %}
-<html>
-        <body>
-            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-            <script src="{% static 'app.js' %}"></script>
-            <h1>Hello from Vercel!</h1>
-            <p>The current time is {{now}}.</p>
-            <p>The tomorrow ({{day}}) Weather condition is {{display}}.</p>
-            <h2 id="change">T4E</h2> 
-            <input type="text" id="name">
-            <button onclick="getRequest()">Click me</button>
-            <div>
-                <a href="{% url 'page1' %}">Go to page1</a>
-                <a href="{% url 'page2' %}">Go to page2</a>
-                <a href="{% url 'page3' %}">Go to page3</a>
-                <a href="{% url 'dropsearch' %}">Drop</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'font.css' %}">
+</head>
+<body>
+    <header>
+        <center>
+            <div class="header">
+                ตากผ้าดีมั้ย
             </div>
-        </body>
+        </center>
+    </header>
+    <center>
+        <a href="{% url 'main' %}">
+            <img class="basket" src="{% static 'images\istockphoto-1175809260-612x612.jpg' %}">
+        </a>
+    </center>
+
+</body>
 </html>
