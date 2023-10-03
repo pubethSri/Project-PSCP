@@ -21,7 +21,7 @@ select_province = (num) => {
     `
     <h1 id="province-selected" class="mouse-hover" style="cursor: pointer;" onclick="click_on()"> ${province} </h1>
     `;
-    document.removeEventListener('keypress', keyboard_listen)
+    document.removeEventListener('keydown', keyboard_listen)
     document.getElementById("province-selected").value = num+1;
     document.getElementById("drop-down-container").style.background = "rgb(0, 0, 0, 0)"
     document.getElementById("amphoe-show").style.display = "block"
@@ -70,7 +70,24 @@ const keyboard_listen = function(e){
     var timmer= setTimeout(function() {
     }, delayInMilliseconds)
     let ready_click = true
-    input += e.key
+    console.log(e.keyCode)
+    if (e.keyCode == 8){
+        input = input.slice(0, -1);
+        document.getElementById("province-show").innerHTML = ""
+        for (let i = 0; i < province_list.length; i++){
+            document.getElementById("province-show").innerHTML +=
+            `
+            <h1 class="mouse-hover" id="mark-province${i}" 
+            onclick = "select_province(${i})"
+            > ${province_list[i]} </h1>
+            `
+            ;
+        };
+    }else if(48 <= e.keyCode && e.keyCode <= 90 || 186 <= e.keyCode && e.keyCode <= 222) {
+        input += e.key;
+    }
+    console.log(input)
+
     // window.clearTimeout(timmer);
     ready_click = true
     for (let i = 0; i < province_list.length; i++){
@@ -84,7 +101,7 @@ const keyboard_listen = function(e){
         if (ready_click){
             select_province(0)
             console.log(input)
-            document.removeEventListener('keypress', keyboard_listen)
+            document.removeEventListener('keydown', keyboard_listen)
         }
     }, delayInMilliseconds)
 
@@ -92,7 +109,9 @@ const keyboard_listen = function(e){
 
 sort = (input) => {
 
-    document.addEventListener('keypress', keyboard_listen, input);
+    // document.addEventListener('keypress', keyboard_listen, input);
+    document.addEventListener('keydown', keyboard_listen, input);
+    
 }
 
 // --------------------------------- Amphoe --------------------------------------

@@ -8398,6 +8398,7 @@ amphoe_select = (num) => {
 	document.getElementById("drop-down-container").style.background = "rgb(0, 0, 0, 0)"
     document.getElementById("drop-down-container").style.overflowY = "hidden";
 	document.getElementById("trakra").style.zIndex = "20";
+	document.removeEventListener('keydown', keyboard_listen_amphoe)
 };
 
 click_amphoe = () =>{
@@ -8421,9 +8422,22 @@ const keyboard_listen_amphoe = function(e){
     var timmer= setTimeout(function() {
     }, delayInMilliseconds)
     let ready_click = true
-    input += e.key
 	console.log(input)
     ready_click = true
+	if (e.keyCode == 8){
+        input = input.slice(0, -1);
+        document.getElementById("amphoe-show").innerHTML = ""
+        for (let i=0 ; i < amphoe_list.length; i++){
+			document.getElementById("amphoe-show").innerHTML += 
+			`
+			<h1 id="mark-select${i}" class="mouse-hover" onclick="amphoe_select(${i})"> ${amphoe_list[i]} </h1>
+			`
+		}
+    	}else if(48 <= e.keyCode && e.keyCode <= 90 || 186 <= e.keyCode && e.keyCode <= 222) {
+			input += e.key;
+    	}
+    console.log(input)
+
     for (let i = 0; i < amphoe_list.length; i++){
         if (!amphoe_list[i].includes(input)){
             document.getElementById("mark-select"+i).style.display = "none";
@@ -8435,12 +8449,12 @@ const keyboard_listen_amphoe = function(e){
         if (ready_click){
             amphoe_select(0)
             console.log(input)
-            document.removeEventListener('keypress', keyboard_listen_amphoe)
+            document.removeEventListener('keydown', keyboard_listen_amphoe)
         }
     }, delayInMilliseconds)
 
 }
 
 sort_amphoe = (input) => {
-    document.addEventListener('keypress', keyboard_listen_amphoe, input);
+    document.addEventListener('keydown', keyboard_listen_amphoe, input);
 }
