@@ -21,6 +21,7 @@ select_province = (num) => {
     `
     <h1 id="province-selected" class="mouse-hover" style="cursor: pointer;" onclick="click_on()"> ${province} </h1>
     `;
+    document.removeEventListener('keypress', keyboard_listen)
     document.getElementById("province-selected").value = num+1;
     document.getElementById("drop-down-container").style.background = "rgb(0, 0, 0, 0)"
     document.getElementById("amphoe-show").style.display = "block"
@@ -39,6 +40,7 @@ select_province = (num) => {
     <h1 id="amphoe-select" class="mouse-hover" onclick="click_amphoe()">${amphoe_list[0]}</h1>
     `;
     console.log(amphoe_list[0]);
+
 };
 
 click_on = () => {
@@ -47,7 +49,7 @@ click_on = () => {
     document.getElementById("drop-down-container").style.background = "rgb(0, 0, 0, 0.6)";
     document.getElementById("trakra").style.zIndex = "-20";
     document.getElementById("amphoe-select").style.display = "none";
-    sort()
+    document.addEventListener('keypress', keyboard_listen); // Ativate sorting event
 
     for (let i = 0; i < province_list.length; i++){
         document.getElementById("province-show").innerHTML +=
@@ -64,40 +66,44 @@ click_reset = () => {
     location.reload();
 }
 
-sort = () => {
-    var delayInMilliseconds = 500;
+const keyboard_listen = function(e){
+    // console.log(e)
+    var delayInMilliseconds = 2000;
     var timmer= setTimeout(function() {
         console.log(input)
     }, delayInMilliseconds)
     let input = ""
     let ready_click = true
-    document.addEventListener('keypress', function(e) {
-        // console.log(e)
-        input += e.key
-        window.clearTimeout(timmer);
-        ready_click = true
-        for (let i = 0; i < province_list.length; i++){
-            if (!province_list[i].includes(input)){
-                document.getElementById("mark-province"+i).style.display = "none";
-            } else {
-                ready_click = false
-            }
-        };
-        timmer= setTimeout(function() {
+    input += e.key
+    // window.clearTimeout(timmer);
+    ready_click = true
+    for (let i = 0; i < province_list.length; i++){
+        if (!province_list[i].includes(input)){
+            document.getElementById("mark-province"+i).style.display = "none";
+        } else {
+            ready_click = false
+        }
+    };
+    timmer= setTimeout(function() {
+        if (ready_click){
+            select_province(0)
             console.log(input)
-            // console.log(ready_click)
-            input = ""
-            if (ready_click){
-            document.getElementById("drop-down-container").innerHTML = 
-                `
-                <h1>**Click The Screen**</h1>
-                `;
-            document.getElementById("drop-down-container").setAttribute('onclick', 'click_reset()')
-            }
-        }, delayInMilliseconds)
+            // input = ""
+            document.removeEventListener('keypress', keyboard_listen)
+        }
+    }, delayInMilliseconds)
 
-    });
 }
+
+// sort = () => {
+//     var delayInMilliseconds = 2000;
+//     var timmer= setTimeout(function() {
+//         console.log(input)
+//     }, delayInMilliseconds)
+//     let input = ""
+//     let ready_click = true
+//     document.addEventListener('keypress', keyboard_listen);
+// }
 
 // --------------------------------- Amphoe --------------------------------------
 // const amphoe = require('./thai_amphures.json');

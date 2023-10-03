@@ -1,1 +1,1 @@
-console.log((['แม่มึง', 'กส']).includes('ม'))
+console.log((['', 'กส']).includes(''))
