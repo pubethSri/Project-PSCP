@@ -49,7 +49,8 @@ click_on = () => {
     document.getElementById("drop-down-container").style.background = "rgb(0, 0, 0, 0.6)";
     document.getElementById("trakra").style.zIndex = "-20";
     document.getElementById("amphoe-select").style.display = "none";
-    document.addEventListener('keypress', keyboard_listen); // Ativate sorting event
+
+    sort(input="") // Ativate sorting event
 
     for (let i = 0; i < province_list.length; i++){
         document.getElementById("province-show").innerHTML +=
@@ -62,17 +63,12 @@ click_on = () => {
     };
 };
 
-click_reset = () => {
-    location.reload();
-}
 
 const keyboard_listen = function(e){
     // console.log(e)
-    var delayInMilliseconds = 2000;
+    var delayInMilliseconds = 1000;
     var timmer= setTimeout(function() {
-        console.log(input)
     }, delayInMilliseconds)
-    let input = ""
     let ready_click = true
     input += e.key
     // window.clearTimeout(timmer);
@@ -88,22 +84,16 @@ const keyboard_listen = function(e){
         if (ready_click){
             select_province(0)
             console.log(input)
-            // input = ""
             document.removeEventListener('keypress', keyboard_listen)
         }
     }, delayInMilliseconds)
 
 }
 
-// sort = () => {
-//     var delayInMilliseconds = 2000;
-//     var timmer= setTimeout(function() {
-//         console.log(input)
-//     }, delayInMilliseconds)
-//     let input = ""
-//     let ready_click = true
-//     document.addEventListener('keypress', keyboard_listen);
-// }
+sort = (input) => {
+
+    document.addEventListener('keypress', keyboard_listen, input);
+}
 
 // --------------------------------- Amphoe --------------------------------------
 // const amphoe = require('./thai_amphures.json');

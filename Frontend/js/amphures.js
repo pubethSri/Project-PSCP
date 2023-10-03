@@ -8406,6 +8406,7 @@ click_amphoe = () =>{
 	document.getElementById("amphoe-show").innerHTML = "" 
     document.getElementById("drop-down-container").style.overflowY = "scroll";
     document.getElementById("drop-down-container").style.background = "rgb(0, 0, 0, 0.6)";
+	sort_amphoe(input="")
 	for (let i=0 ; i < amphoe_list.length; i++){
 		document.getElementById("amphoe-show").innerHTML += 
 		`
@@ -8414,3 +8415,32 @@ click_amphoe = () =>{
     }
 };
 
+const keyboard_listen_amphoe = function(e){
+    // console.log(e)
+    var delayInMilliseconds = 1000;
+    var timmer= setTimeout(function() {
+    }, delayInMilliseconds)
+    let ready_click = true
+    input += e.key
+	console.log(input)
+    ready_click = true
+    for (let i = 0; i < amphoe_list.length; i++){
+        if (!amphoe_list[i].includes(input)){
+            document.getElementById("mark-select"+i).style.display = "none";
+        } else {
+            ready_click = false
+        }
+    };
+    timmer= setTimeout(function() {
+        if (ready_click){
+            amphoe_select(0)
+            console.log(input)
+            document.removeEventListener('keypress', keyboard_listen_amphoe)
+        }
+    }, delayInMilliseconds)
+
+}
+
+sort_amphoe = (input) => {
+    document.addEventListener('keypress', keyboard_listen_amphoe, input);
+}

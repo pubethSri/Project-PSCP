@@ -1,1 +1,0 @@
-Have bug When sorted and Choose You still can type for sort/
