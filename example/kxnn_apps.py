@@ -2,11 +2,14 @@
 from datetime import datetime,timedelta
 import json
 import requests
+NOW = ""
 
 def time():  #แปลงเวลา
+    global NOW
     start = (datetime.now().isoformat())
     end = ((datetime.now()+timedelta(hours=8)).isoformat())
-    print(str(start).split(':')[0]+':00:00', str(end).split(':')[0]+':00:00')
+    NOW += (str(start).split(':')[0]+':00:00' + str(end).split(':')[0]+':00:00')
+    print(NOW)
     return str(start).split(':')[0]+':00:00', str(end).split(':')[0]+':00:00'
 
 def processing(process):  #คำนวณว่าเป็น True หรือ false: True คือควรตาก False คือไม่ควร
@@ -33,5 +36,5 @@ def index(province, amphoe):
     process = (infor.get('WeatherForecasts'))[0].get('forecasts')
     out = processing(process)
     print(out)
-    return out
+    return [out, NOW]
 #print(index(input(), input()))  #Input เป็นภาษาไทย ชื่อจังหวัด กับอำเภอ

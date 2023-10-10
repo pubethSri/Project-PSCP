@@ -12,5 +12,6 @@ const getRequest = async () => {
     var new_name = new_prov + " " + new_amph 
     document.getElementById("change").innerHTML=new_name
     document.getElementById("display").innerHTML=response.data.dry
+    document.getElementById("now").innerHTML=response.data.now
     console.log(new_name)
 }

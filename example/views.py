@@ -2,9 +2,12 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from . import kxnn_apps
 
+DEFAULT = kxnn_apps.index('กรุงเทพมหานคร', 'หนองจอก')
+
 DATA = {'province': 'กรุงเทพมหานคร',
         'amphoe': 'หนองจอก',
-        'dryer': kxnn_apps.index('กรุงเทพมหานคร', 'หนองจอก')}
+        'dryer': DEFAULT[0],
+        'day': DEFAULT[1]}
 
 
 def get_data(request):
@@ -16,11 +19,14 @@ def get_data(request):
     print(amphoe)
     DATA['province'] = province
     DATA['amphoe'] = amphoe
-    DATA['dryer'] = kxnn_apps.index(DATA.get('province'), (DATA.get('amphoe')))
+    DEFAULT = kxnn_apps.index(DATA.get('province'), (DATA.get('amphoe')))
+    DATA['dryer'] = DEFAULT[0]
+    DATA['day'] = DEFAULT[1]
     index(request)
     return JsonResponse({'input_prov': province,
                          'input_amphoe': amphoe,
-                         'dry': DATA.get('dryer')})
+                         'dry': DATA.get('dryer'),
+                         'now': DATA.get('day')})
 
 def index(request):
     data = {'display': DATA.get('dryer'),
