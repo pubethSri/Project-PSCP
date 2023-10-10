@@ -9,7 +9,7 @@ def time():  #แปลงเวลา
     global NOW
     start = ((datetime.now(pytz.timezone("Asia/Bangkok")))).isoformat()
     end = (((datetime.now(pytz.timezone("Asia/Bangkok"))))+ timedelta(hours=8)).isoformat()
-    NOW = (str(start).split(':')[0]+':00:00' + str(end).split(':')[0]+':00:00')
+    NOW = (str(start).split(':')[0]+':00:00' + ' ' + str(end).split(':')[0]+':00:00')
     print(NOW)
     return str(start).split(':')[0]+':00:00', str(end).split(':')[0]+':00:00'
 
@@ -38,4 +38,4 @@ def index(province, amphoe):
     out = processing(process)
     print(out)
     return [out, NOW]
-#print(index(input(), input()))  #Input เป็นภาษาไทย ชื่อจังหวัด กับอำเภอ
+# print(index(input(), input()))  #Input เป็นภาษาไทย ชื่อจังหวัด กับอำเภอ
