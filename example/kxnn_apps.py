@@ -7,7 +7,7 @@ NOW = ""
 def time():  #แปลงเวลา
     global NOW
     start = (datetime.now().isoformat())
-    end = ((datetime.now()+timedelta(hours=8)).isoformat())
+    end = ((datetime.now()+timedelta(hours=7)).isoformat())
     NOW = (str(start).split(':')[0]+':00:00' + str(end).split(':')[0]+':00:00')
     print(NOW)
     return str(start).split(':')[0]+':00:00', str(end).split(':')[0]+':00:00'
