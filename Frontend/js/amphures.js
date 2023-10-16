@@ -8435,6 +8435,18 @@ const keyboard_listen_amphoe = function(e){
 		}
     	}else if(48 <= e.keyCode && e.keyCode <= 90 || 186 <= e.keyCode && e.keyCode <= 222) {
 			input += e.key;
+        document.getElementById("province-show").innerHTML = ""
+        for (let i = 0; i < province_list.length; i++){
+            document.getElementById("province-show").innerHTML +=
+            `
+            <h1 class="mouse-hover" id="mark-province${i}" 
+            onclick = "select_province(${i})"
+            > ${province_list[i]} </h1>
+            `
+            ;
+        };
+    	}else if(48 <= e.keyCode && e.keyCode <= 90 || 186 <= e.keyCode && e.keyCode <= 222) {
+        	input += e.key;
     	}
     console.log(input)
 
@@ -8458,3 +8470,5 @@ const keyboard_listen_amphoe = function(e){
 sort_amphoe = (input) => {
     document.addEventListener('keydown', keyboard_listen_amphoe, input);
 }
+
+

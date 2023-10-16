@@ -27,6 +27,7 @@ select_province = (num) => {
     document.getElementById("amphoe-show").style.display = "block"
     document.getElementById("drop-down-container").style.overflowY = "hidden";
     document.getElementById("trakra").style.zIndex = "20"
+    
     console.log(province);
     let province_id = document.getElementById("province-selected").value;
     amphoe_list = []
