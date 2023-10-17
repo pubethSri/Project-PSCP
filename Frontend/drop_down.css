@@ -71,7 +71,6 @@ body, html{
 }
 
 #province-show{
-    padding-left: 2%;
     font-size: 5vw;
     color: rgb(255,255,255, 0.3);
     width: 200vh;
@@ -81,7 +80,6 @@ body, html{
 }
 
 #amphoe-show {
-    padding-left: 2%;
     font-size: 3.5vw;
     color: rgb(255,255,255, 0.3);
     transition: all 1s;
