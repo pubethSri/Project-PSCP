@@ -17,6 +17,18 @@ header {
     margin-top: 60px;
 }
 
+#myVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
 .header{
     font-size: 8rem;
 }
@@ -66,7 +78,8 @@ header {
 
     .basket{
         position: relative;
-        width: 15rem;
+        width: 17rem;
+        margin-top: 12rem;
     }
 
 }

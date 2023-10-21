@@ -1,4 +1,3 @@
-
 const amphoe = [
 	{
 	  "id": 8607,
@@ -8392,33 +8391,84 @@ amphoe_select = (num) => {
 	let amphoe_mark = document.getElementById("mark-select" + String(num)).innerHTML;
 	console.log(amphoe_mark);
 	document.getElementById("province-show").style.display = "block";
-	
 	document.getElementById("amphoe-show").innerHTML = 
 	`
 	<h1 id="amphoe-select" class="mouse-hover" onclick="click_amphoe()">${amphoe_mark}</h1>
 	`
 	document.getElementById("drop-down-container").style.background = "rgb(0, 0, 0, 0)"
     document.getElementById("drop-down-container").style.overflowY = "hidden";
-	
 	document.getElementById("trakra").style.zIndex = "20";
+	document.removeEventListener('keydown', keyboard_listen_amphoe)
 };
 
 click_amphoe = () =>{
 	document.getElementById("trakra").style.zIndex = "-20";
 	document.getElementById("province-show").style.display = "none";
-	document.getElementById("amphoe-show").innerHTML = ""
-    // display: none;
-    
+	document.getElementById("amphoe-show").innerHTML = "" 
     document.getElementById("drop-down-container").style.overflowY = "scroll";
     document.getElementById("drop-down-container").style.background = "rgb(0, 0, 0, 0.6)";
-	
+	sort_amphoe(input="")
 	for (let i=0 ; i < amphoe_list.length; i++){
 		document.getElementById("amphoe-show").innerHTML += 
 		`
 		<h1 id="mark-select${i}" class="mouse-hover" onclick="amphoe_select(${i})"> ${amphoe_list[i]} </h1>
 		`
     }
-    console.log(amphoe_list)
 };
 
-// console.log(amphoe)
+const keyboard_listen_amphoe = function(e){
+    // console.log(e)
+    var delayInMilliseconds = 1000;
+    var timmer= setTimeout(function() {
+    }, delayInMilliseconds)
+    let ready_click = true
+	console.log(input)
+    ready_click = true
+	if (e.keyCode == 8){
+        input = input.slice(0, -1);
+        document.getElementById("amphoe-show").innerHTML = ""
+        for (let i=0 ; i < amphoe_list.length; i++){
+			document.getElementById("amphoe-show").innerHTML += 
+			`
+			<h1 id="mark-select${i}" class="mouse-hover" onclick="amphoe_select(${i})"> ${amphoe_list[i]} </h1>
+			`
+		}
+    	}else if(48 <= e.keyCode && e.keyCode <= 90 || 186 <= e.keyCode && e.keyCode <= 222) {
+			input += e.key;
+        document.getElementById("province-show").innerHTML = ""
+        for (let i = 0; i < province_list.length; i++){
+            document.getElementById("province-show").innerHTML +=
+            `
+            <h1 class="mouse-hover" id="mark-province${i}" 
+            onclick = "select_province(${i})"
+            > ${province_list[i]} </h1>
+            `
+            ;
+        };
+    	}else if(48 <= e.keyCode && e.keyCode <= 90 || 186 <= e.keyCode && e.keyCode <= 222) {
+        	input += e.key;
+    	}
+    console.log(input)
+
+    for (let i = 0; i < amphoe_list.length; i++){
+        if (!amphoe_list[i].includes(input)){
+            document.getElementById("mark-select"+i).style.display = "none";
+        } else {
+            ready_click = false
+        }
+    };
+    timmer= setTimeout(function() {
+        if (ready_click){
+            amphoe_select(0)
+            console.log(input)
+            document.removeEventListener('keydown', keyboard_listen_amphoe)
+        }
+    }, delayInMilliseconds)
+
+}
+
+sort_amphoe = (input) => {
+    document.addEventListener('keydown', keyboard_listen_amphoe, input);
+}
+
+
