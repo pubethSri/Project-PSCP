@@ -13,13 +13,15 @@ def time():  #แปลงเวลา
     print(NOW)
     return str(start).split(':')[0]+':00:00', str(end).split(':')[0]+':00:00'
 
-def processing(process):  #คำนวณว่าเป็น True หรือ false: True คือควรตาก False คือไม่ควร
-    for items in range(len(process)):
-        if process[items].get('data').get('cond') > 4: #cond ถ้ามากกว่า 4 คือมีฝนตกละ ก็เลยคิดไปเลยว่าถ้าใน 8 ชม มีฝนตกก็คือผ้าไม่แห้งแน่ๆ
+def processing(process, choice):  #คำนวณว่าเป็น True หรือ false: True คือควรตาก False คือไม่ควร
+    '''ถ้าเป็น Indoor ก็เช็คไป 8 ชมว่ามีฝนตกมั้ย แต่ถ้าเป็น Outdoor ผ้าจะแห้งเร็วกว่าประมาณ 2 เท่า เลยเช็คแค่ 4 ชม'''
+    for items in range(len(process) if choice == 'IN' else len(process)//2):
+        if process[items].get('data').get('cond') in range(5, 9): #cond ถ้าอยู่ในช่วง 5-8 คือมีฝนตก ก็เลยคิดไปเลยว่าถ้าใน 8 ชม มีฝนตกก็คือผ้าไม่แห้งแน่ๆ
             return False
     return True
 
-def index(province, amphoe):
+
+def index(province, amphoe, choice): # Choice รับเป็น String ('IN' หรือ 'OUT')
     """main function"""
     start, end = time()
     url = "https://data.tmd.go.th/nwpapi/v1/forecast/area/place"
@@ -35,7 +37,8 @@ def index(province, amphoe):
     print(province, amphoe)
     #print(infor)
     process = (infor.get('WeatherForecasts'))[0].get('forecasts')
-    out = processing(process)
+    print(process)
+    out = processing(process, choice)
     print(out)
     return [out, NOW]
-# print(index(input(), input()))  #Input เป็นภาษาไทย ชื่อจังหวัด กับอำเภอ
+# print(index(input(), input(), input()))  #Input เป็นภาษาไทย ชื่อจังหวัด กับอำเภอ
