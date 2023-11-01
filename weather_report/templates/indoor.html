@@ -10,13 +10,11 @@
     <link rel="stylesheet" href="{% static 'font.css' %}">
 </head>
 <body class="bg">
-    <button onclick="letsGo()">
-        <a href="{% url 'weather' %}">
-            <div class="trakra" id="trakra">
-                <img src="{% static 'images/WebMaterial/indoor/trakra-edit.png' %}">
-            </div>
-        </a>
-    </button>
+    <a href="{% url 'weather' %}" onclick="letsGo()">
+        <div class="trakra" id="trakra">
+            <img src="{% static 'images/WebMaterial/indoor/trakra-edit.png' %}">
+        </div>
+    </a>
     <div class="blur" id="blur"></div>
     <div id="drop-down-container">
         <div class="custom-select" id="province-show">
