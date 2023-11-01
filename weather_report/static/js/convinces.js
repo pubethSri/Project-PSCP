@@ -15,8 +15,9 @@ document.getElementById("province-show").innerHTML =
 `;
 document.getElementById("province-selected").value = 1;
 
+
 select_province = (num) => {
-    province = document.getElementById("mark-province" + String(num)).innerHTML;
+    let province = document.getElementById("mark-province" + String(num)).innerHTML;
     document.getElementById("province-show").innerHTML = 
     `
     <h1 id="province-selected" class="mouse-hover" style="cursor: pointer;" onclick="click_on()"> ${province} </h1>
@@ -43,6 +44,7 @@ select_province = (num) => {
     console.log(amphoe_list[0]);
 
 };
+
 
 click_on = () => {
     document.getElementById("province-show").innerHTML = "";

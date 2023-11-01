@@ -8387,6 +8387,7 @@ document.getElementById("amphoe-show").innerHTML =
     <h1 id="amphoe-select" class="mouse-hover" onclick="click_amphoe()">เขตพระนคร</h1>
     `;
 
+
 amphoe_select = (num) => {
 	let amphoe_mark = document.getElementById("mark-select" + String(num)).innerHTML;
 	console.log(amphoe_mark);
@@ -8400,6 +8401,7 @@ amphoe_select = (num) => {
 	document.getElementById("trakra").style.zIndex = "20";
 	document.removeEventListener('keydown', keyboard_listen_amphoe)
 };
+
 
 click_amphoe = () =>{
 	document.getElementById("trakra").style.zIndex = "-20";

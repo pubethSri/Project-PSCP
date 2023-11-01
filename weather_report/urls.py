@@ -9,4 +9,6 @@ urlpatterns = [
     path('main_page', main.main_page, name='main'),
     path('indoor_page', main.indoor_page, name='indoor'),
     path('outdoor_page', main.outdoor_page, name='outdoor'),
+    path('set_everything', main.set_everything),
+    path('weather', main.weather_like, name='weather'),
 ]

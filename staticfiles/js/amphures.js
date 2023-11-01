@@ -8387,6 +8387,7 @@ document.getElementById("amphoe-show").innerHTML =
     <h1 id="amphoe-select" class="mouse-hover" onclick="click_amphoe()">เขตพระนคร</h1>
     `;
 
+
 amphoe_select = (num) => {
 	let amphoe_mark = document.getElementById("mark-select" + String(num)).innerHTML;
 	console.log(amphoe_mark);
@@ -8400,6 +8401,7 @@ amphoe_select = (num) => {
 	document.getElementById("trakra").style.zIndex = "20";
 	document.removeEventListener('keydown', keyboard_listen_amphoe)
 };
+
 
 click_amphoe = () =>{
 	document.getElementById("trakra").style.zIndex = "-20";
@@ -8433,18 +8435,18 @@ const keyboard_listen_amphoe = function(e){
 			<h1 id="mark-select${i}" class="mouse-hover" onclick="amphoe_select(${i})"> ${amphoe_list[i]} </h1>
 			`
 		}
-    	}else if(48 <= e.keyCode && e.keyCode <= 90 || 186 <= e.keyCode && e.keyCode <= 222) {
-			input += e.key;
-        document.getElementById("province-show").innerHTML = ""
-        for (let i = 0; i < province_list.length; i++){
-            document.getElementById("province-show").innerHTML +=
-            `
-            <h1 class="mouse-hover" id="mark-province${i}" 
-            onclick = "select_province(${i})"
-            > ${province_list[i]} </h1>
-            `
-            ;
-        };
+    	// }else if(48 <= e.keyCode && e.keyCode <= 90 || 186 <= e.keyCode && e.keyCode <= 222) {
+		// 	input += e.key;
+        // document.getElementById("province-show").innerHTML = ""
+        // for (let i = 0; i < province_list.length; i++){
+        //     document.getElementById("province-show").innerHTML +=
+        //     `
+        //     <h1 class="mouse-hover" id="mark-province${i}" 
+        //     onclick = "select_province(${i})"
+        //     > ${province_list[i]} </h1>
+        //     `
+        //     ;
+        // };
     	}else if(48 <= e.keyCode && e.keyCode <= 90 || 186 <= e.keyCode && e.keyCode <= 222) {
         	input += e.key;
     	}
@@ -8470,5 +8472,4 @@ const keyboard_listen_amphoe = function(e){
 sort_amphoe = (input) => {
     document.addEventListener('keydown', keyboard_listen_amphoe, input);
 }
-
 

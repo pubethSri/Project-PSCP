@@ -1,28 +1,38 @@
-"""Doc"""
-from datetime import datetime
+"""This is app.py for Endless rain project"""
+from datetime import datetime,timedelta
 import json
-import random
 import requests
+import pytz
+NOW = ""
 
+def time():  #แปลงเวลา
+    global NOW
+    start = ((datetime.now(pytz.timezone("Asia/Bangkok")))).isoformat()
+    end = (((datetime.now(pytz.timezone("Asia/Bangkok"))))+ timedelta(hours=8)).isoformat()
+    NOW = (str(start).split(':')[0]+':00:00' + ' ' + str(end).split(':')[0]+':00:00')
+    return str(start).split(':')[0]+':00:00', str(end).split(':')[0]+':00:00'
 
-def index():
-    """Doc"""
-    now = datetime.now()
-    day = "{:02d}".format(int(now.strftime("%d")) + 1)
-    time = "{:>02s}:00:00".format(str(random.randint(0, 23)))
-    print(now)
-    print(day)
+def processing(process):  #คำนวณว่าเป็น True หรือ false: True คือควรตาก False คือไม่ควร
+    for items in range(len(process)):
+        if process[items].get('data').get('cond') > 4: #cond ถ้ามากกว่า 4 คือมีฝนตกละ ก็เลยคิดไปเลยว่าถ้าใน 8 ชม มีฝนตกก็คือผ้าไม่แห้งแน่ๆ
+            return False
+    return True
+
+def index(province, amphoe):
+    """main function"""
+    start, end = time()
     url = "https://data.tmd.go.th/nwpapi/v1/forecast/area/place"
-
-    querystring = {"domain":"2", "province":"กรุงเทพมหานคร", "amphoe":"ลาดกระบัง", "tambon":"ลำปลาทิว", "fields":"tc,rh,cond", "starttime":"2023-10-" + day + "T" + time}
-
-    token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImI1OTAxN2RjZDNkMmE5NTk2MjgzNmQ4YmY3ODM4NTkyNGFmY2FkNmUyM2NmYzdhNjlkMmI3MDkxMDc5ZDU0MWE2MWE3Yjg1NzA1MDMyYTM2In0.eyJhdWQiOiIyIiwianRpIjoiYjU5MDE3ZGNkM2QyYTk1OTYyODM2ZDhiZjc4Mzg1OTI0YWZjYWQ2ZTIzY2ZjN2E2OWQyYjcwOTEwNzlkNTQxYTYxYTdiODU3MDUwMzJhMzYiLCJpYXQiOjE2OTQwNTY3NDYsIm5iZiI6MTY5NDA1Njc0NiwiZXhwIjoxNzI1Njc5MTQ2LCJzdWIiOiIyNzQzIiwic2NvcGVzIjpbXX0.fk9nFx77cz4kvydN6OY97P39-_oIZw4nbgBXLZh5cCYu5RZwo4yVvEb7E1i-Dt9oF2S15cSYLd9sq_BafcoOPV83d2pSoXQnx906t_vxkiORb_g1Een-zPQtzOQgrUao978ygPdUWlZWU7kgOWdkGF-w4QWjpq8Iry1E3pQcxTiXWu0AuVcEADbFev97QUpbakmRVIcs9V-jdNgVUYvPEfbgXxkCDA-gWmS5BeH-4mB2mX7wtqbvCeAad-6bs4v0udEfVBPYdVeEOjH-0M-iLCg-L26xO55UuZdY7I5ttsqCV90Dki5v7otHimgltXpcjjXPZ3rhX2NjMjohdnJA1SIk5Jshg5jiVtHMeN8a5fpl5x65H5CijK5kP0lrsV4VboJXu6Fzl58zVoUIu-U-5oiPhKszUrJ8DV2LUT9PecU-_bmbGHC_kJQw8AcbpeThhT1NF4jbSINN6aFZDUY1QKnG8qHOHQX45_m_Dd8HNUFPEPwWX5PNY0igr7UlTXaLTCAiKHGafctcdJeayWZOe7KLU78tZyQ2AgW1lVpJA0qX5qbecAT87HI0mwF3m6nd3UzfuRyrr3AjgGLg66FRbIx3gYcFhSiXCq0-ahvEEZLiMHkiN-03t65Y8jdvcERu4zhngFTz_lAiao6lBfS-BwTtmphsbaOzIXAPfQndL1A"
+    querystring = {"domain":"2", "province":province, "amphoe":amphoe, "fields":"cond", "starttime":start, "endtime":end}
+    token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjYwODFhNjRiM2RlODE3NjhhNjUwMDdmZGExNTg2Y2UzODNkNjE3NGRjYmZlMTZjMTQ2YWZlY2I4YWRlYjVhMjcxZmNkNGM0YzE5ZDQxNjk0In0.eyJhdWQiOiIyIiwianRpIjoiNjA4MWE2NGIzZGU4MTc2OGE2NTAwN2ZkYTE1ODZjZTM4M2Q2MTc0ZGNiZmUxNmMxNDZhZmVjYjhhZGViNWEyNzFmY2Q0YzRjMTlkNDE2OTQiLCJpYXQiOjE2OTU2NTkxODUsIm5iZiI6MTY5NTY1OTE4NSwiZXhwIjoxNzI3MjgxNTg1LCJzdWIiOiIyNzgxIiwic2NvcGVzIjpbXX0.QPJ6zgTbvofc2WLTWO7t3wmiOsCeWSLqzSzWHplaVJkKpZVPdkUMtj80cyrKU7XeM7rLAuVx3T_0bNuDKMyU1Mkci7sY21Asi3obuRmabW3eWb-aig4meamHw5sO90G2K5BBv9LHDkCu9VvfYzTsTLvLbLyOafNHpbDpayFuhAOGFMoVXFkX0O66kWy-Zf8Uvu7W4xANfsTXyERHOaoLybiAitJftj8O0H-WuvDhDTKqVcZuh3PguFO2Y3TnqLUh9ksbimDpiTd8I_men7b4LTAnIKhWOsroEEY0IvQrlaurv1DjV3l886JCcAa77eLbby2LriFDMDwkoc1pw9AqzWbW_IZX0GT7ndurws1D0NFWW23yXbp60_4JFIo8iZ5FsdeUcJCanfCfai87Z0zLDUOSPZt6z6FUBjBqq7Yxd_Ivz_y2tLYw5DaDGGJv990V0xj7CqiPO4IcUFfQQevWeWEM5OCwYl5jBZPtYEI4N_KIc5_KZiJzc4YWUEqV64hrhRKbY7-cjk4T_AHmjaU6LxYDdeNrnXlkyrUHml38xTH5cBYZLAq8ZBGtkt1AiaIVZB444UeHqvMKgTovaXk131HDEA_U6_gq_kKX7BnU9t-SzzsRIQZuUVaPZoMe3U2ICZrT9K5OhF8iOCjXPH11GTlMLJTTv-WH468NpDce6Iw"
 
     headers = {
         'accept': "application/json",
         'authorization': "Bearer " + token,
         }
     response = requests.request("GET", url, headers=headers, params=querystring)
-    information = json.loads(response.text)
-    display = information.get("WeatherForecasts")[0].get("forecasts")[0]
-    return {'display': display, 'now': now, 'day': day}
+    infor = json.loads(response.text)
+    #print(infor)
+    process = (infor.get('WeatherForecasts'))[0].get('forecasts')
+    out = processing(process)
+    return out
+# print(index(input(), input()))  #Input เป็นภาษาไทย ชื่อจังหวัด กับอำเภอ
