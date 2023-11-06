@@ -29,8 +29,7 @@ body{
 
 .trakra{
     transition: all 0.5s;
-    max-height: 115%;
-    max-width: 80%;
+    max-width: 100%;
     position: absolute;
     right: -5%;
     bottom: -50%;
