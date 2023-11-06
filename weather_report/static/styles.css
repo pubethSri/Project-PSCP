@@ -1,85 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chonburi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+* {
+    font-family: 'Chonburi', cursive;
+
+}
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    -drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    text-decoration: none;
 
 }
 
-body {
-    background-color: rgba(200,202,124,255);
-    font-family: 'Noto Sans Thai', sans-serif;
-
+.title{
+    /* padding-top: %; */
+    padding-left: 4%;
 }
 
-header {
-    margin-top: 60px;
+.title p {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 3rem;
 }
 
-#myVideo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
+.title a {
+    color: rgba(42, 39, 39, 0.8);
+    text-decoration: none;
+    padding-left: 1%;
+    font-size: 30px;
+    
+}
+
+.content {
+
+    padding-left: 36vw;
+    display: flex;
+    flex-direction: row;
+}
+.content a :hover{
+    content: url("t4e.png");
+}
+
+.raw {
+    height: 40vw;
+}
+
+.text {
+    transform: rotate(90deg);
+    padding-top: 33%;
+    
+}
+
+.text h1 {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 4.5vw;
+}
+
+.info {
+    position: absolute;
     bottom: 0;
-    z-index: -1;
-}
-
-.header{
-    font-size: 8rem;
-}
-
-.basket{
-    top:rem;
-    position: relative;
-    width: 30rem;
-}
-
-@media (max-width: 1440px) {
-    header {
-        margin-top: 60px;
-    }
-    
-    .header{
-        font-size: 8rem;
-    }
-    
-    .basket{
-        top:3rem;
-        position: relative;
-        width:30rem;
-    }
-}
-
-@media (max-width: 768px) {
-    header {
-        margin-top: 100px;
-    }
-
-    .header{
-        font-size: 6rem;
-    }
-
-    .basket{
-        position: relative;
-        width: 25rem;
-    }
-
-}
-
-@media (max-width: 400px) {
-    .header{
-        font-size: 3rem;
-    }
-
-    .basket{
-        position: relative;
-        width: 17rem;
-        margin-top: 12rem;
-    }
 
 }
