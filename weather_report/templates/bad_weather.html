@@ -8,16 +8,22 @@
     <link rel="stylesheet" href="{% static 'lastpage.css' %}">
     <link rel="stylesheet" href="{% static 'font.css' %}">
 </head>
-<body style="background: rgba(28,39,76,255);">
-    <img class="shirt" src="{% static 'images/WebMaterial/res/takalt_edit.png' %}">
-    <div class="province-amphoe-show">
-        <div class="province">ไม่ควรตาก</div>
-        <div class="amphoe">ฝนกำลังจะตก</div>
+<body style="background: rgba(28,39,76,255);">\
+    <div class="container">
+        <img class="shirt" src="{% static 'images/WebMaterial/res/takalt_edit.png' %}">
+        <div class="province-amphoe-show">
+            <div class="province">{{valid}}</div>
+        </div>
+        <div class="data">
+            <li>{{hour_1}}</li>
+            <li>{{hour_2}}</li>
+            <li>{{hour_3}}</li>
+            <li>{{hour_4}}</li>
+            <li>{{hour_5}}</li>
+            <li>{{hour_6}}</li>
+            <li>{{hour_7}}</li>
+            <li>{{hour_8}}</li>
+        </div>
     </div>
-    <div class="data">
-        <div class="province">{{province}}</div>
-        <div class="amphoe">{{amphoe}}</div>
-    </div>
-
 </body>
 </html>
