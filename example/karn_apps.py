@@ -8,10 +8,30 @@ NOW = ""
 def time():  #แปลงเวลา
     global NOW
     start = ((datetime.now(pytz.timezone("Asia/Bangkok")))).isoformat()
-    end = (((datetime.now(pytz.timezone("Asia/Bangkok"))))+ timedelta(hours=8)).isoformat()
+    end = (((datetime.now(pytz.timezone("Asia/Bangkok"))))+ timedelta(hours=7)).isoformat()
     NOW = (str(start).split(':')[0]+':00:00' + ' ' + str(end).split(':')[0]+':00:00')
     print(NOW)
     return str(start).split(':')[0]+':00:00', str(end).split(':')[0]+':00:00'
+
+change = {
+    1:'ท้องฟ้าแจ่มใส',\
+    2:'มีเมฆบางส่วน',\
+    3:'เมฆเป็นส่วนมาก',\
+    4:'มีเมฆมาก',\
+    5:'ฝนตกเล็กน้อย', \
+    6:'ฝนปานกลาง',\
+    7:'ฝนตกหนัก',\
+    8:'ฝนฟ้าคะนอง', \
+    9:'อากาศหนาวจัด', \
+    10:'อากาศหนาว', \
+    11:'อากาศเย็น', \
+    12:'อากาศร้อนจัด',
+}
+def getweathercond(process):
+    weather = {}
+    for i in range(len(process)):
+        weather[i+1] = change[process[i].get('data').get('cond')]
+    return weather
 
 def processing(process, choice):  #คำนวณว่าเป็น True หรือ false: True คือควรตาก False คือไม่ควร
     '''ถ้าเป็น Indoor ก็เช็คไป 8 ชมว่ามีฝนตกมั้ย แต่ถ้าเป็น Outdoor ผ้าจะแห้งเร็วกว่าประมาณ 2 เท่า เลยเช็คแค่ 4 ชม'''
@@ -39,6 +59,7 @@ def index(province, amphoe, choice): # Choice รับเป็น String ('IN'
     process = (infor.get('WeatherForecasts'))[0].get('forecasts')
     print(process)
     out = processing(process, choice)
+    weather = getweathercond(process)
     print(out)
-    return [out, NOW]
+    return [out, NOW, weather]
 # print(index(input(), input(), input()))  #Input เป็นภาษาไทย ชื่อจังหวัด กับอำเภอ
