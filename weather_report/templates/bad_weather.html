@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" style="color: rgb(255, 255, 255, 0.7);">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>อย่าตากเลย</title>
+    <link rel="stylesheet" href="{% static 'lastpage.css' %}">
+    <link rel="stylesheet" href="{% static 'font.css' %}">
+</head>
+<body style="background: rgba(28,39,76,255);">
+    <video style="height: 100%; position: absolute; right: 0;" autoplay loop muted playsinline>
+        <source src="{% static 'vids\wet.webm' %}" type="video/webm">
+    </video>
+    <!-- <img class="shirt" src="{% static 'images/WebMaterial/res/takalt_edit.png' %}"> -->
+    <div class="province-amphoe-show">
+        <div class="province">ไม่ควรตาก</div>
+        <div class="amphoe">ฝนกำลังจะตก</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+body{
+    background: url("/static/images//WebMaterial/indoor/BG.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    
+}
+
+.blur{
+    transition: all 1s;
+    height: 100%;
+    width: 100%;
+    background: url("/static/images//WebMaterial/indoor/BG.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    
+    position: absolute;
+    z-index: -9999999999999999999;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+
+}
+
+.trakra{
+    transition: all 0.5s;
+    max-width: 100%;
+    position: absolute;
+    right: 0%;
+    bottom: -1%;
+    z-index: 20;
+
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+.trakra:hover + #blur{
+    transition: all 0.5s;
+
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+
+.trakra:hover{
+    transition: all 0.5s;
+    cursor: pointer;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+}

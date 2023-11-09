@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'choose.css' %}">
+</head>
+<body class="bg" style="background: url('/static/images//outdoorbg.png');">
+    <div class="frame">
+        <div class="frame-left">
+            <img src="{% static 'images\leftui.png' %}" alt="">
+        </div>
+
+        <div class="frame-right">
+            <img src="{% static 'images\right_ui.png' %}" alt="">
+        </div>
+    </div>
+    <div class="select">
+        <img src="{% static 'images\text.png' %}"><br>
+        <a href="{% url 'choose_01' %}"><img src="{% static 'images\buton.png' %}"></a>
+    </div>
+    <div class="go-btn">
+        <a href="{% url 'outdoor' %}"><img src="{% static 'images\Gobutton.png' %}"></a>
+    </div>
+
+</body>
+</html>

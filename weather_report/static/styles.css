@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Chonburi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+* {
+    font-family: 'Chonburi', cursive;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    -drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    text-decoration: none;
+
+}
+
+.title{
+    /* padding-top: %; */
+    padding-left: 4%;
+}
+
+.title p {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 3rem;
+}
+
+.title a {
+    color: rgba(42, 39, 39, 0.8);
+    text-decoration: none;
+    padding-left: 1%;
+    font-size: 30px;
+    
+}
+
+.content {
+
+    padding-left: 36vw;
+    display: flex;
+    flex-direction: row;
+}
+.content a :hover{
+    content: url("images/t4e3.png");
+}
+
+.raw {
+    height: 40vw;
+}
+
+.text {
+    transform: rotate(90deg);
+    padding-top: 33%;
+    
+}
+
+.text h1 {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 4.5vw;
+}
+
+.info {
+    position: absolute;
+    bottom: 0;
+
+}

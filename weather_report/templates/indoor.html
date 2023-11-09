@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ในที่ร่ม</title>
+    <link rel="stylesheet" href="{% static 'drop_down.css' %}">
+    <link rel="stylesheet" href="{% static 'indoor.css' %}">
+    <link rel="stylesheet" href="{% static 'font.css' %}">
+</head>
+<body class="bg">
+    <a href="{% url 'weather' %}" onclick="letsGo()">
+        <div class="trakra" id="trakra">
+            <img src="{% static 'images/WebMaterial/indoor/trakra_edit.png' %}">
+        </div>
+    </a>
+    <div class="blur" id="blur"></div>
+    <div id="drop-down-container">
+        <div class="custom-select" id="province-show">
+        </div>
+        <div class="custom-select-amphoe" id="amphoe-show">
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{% static 'js/sender.js' %}"></script>
+    <script src="{% static 'js/convinces.js' %}"></script>
+    <script src="{% static 'js/amphures.js' %}"></script>
+</body>
+</html>

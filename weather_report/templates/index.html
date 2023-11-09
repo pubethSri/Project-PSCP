@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตากผ้าดีมั้ย</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'font.css' %}">
+</head>
+<body style="background: rgb(140, 150, 190)">
+
+    <div class="content">
+        <a href="{% url 'choose_01' %}" class="click">
+            <img src="{% static 'images\raw.png' %}" class="raw">
+        </a>
+    </div>
+    <div class="title">
+        <p>"ตากผ้าดีมั้ย" | <font style="font-family: 'Noto Sans JP', sans-serif;">あめふり</font></p>
+        <a href="https://github.com/pubethSri/Project-PSCP" target="_blank">https://github.com/pubethSri/Project-PSCP</a>
+    </div>
+</body>
+</html>
