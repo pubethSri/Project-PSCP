@@ -4,9 +4,7 @@ from django.shortcuts import render
 from . import weather_app
 
 SELECTED = {"province": "", "amphoe": ""}
-DATA = {}
 CHOICE = ""
-PAGE = ""
 
 
 def landing(request):
@@ -34,21 +32,20 @@ def outdoor_page(request):
 
 
 def set_everything(request):
-    global PAGE
-    info = request.GET
-    SELECTED.update({"province": info.get('province'),
-                     "amphoe": info.get('amphoe')})
-    good_or_bad = weather_app.index(SELECTED.get("province"), SELECTED.get("amphoe"), CHOICE)
-    if good_or_bad[0] is True:
-        use = 'nice_weather'
-        DATA.update({"valid": "ตากเลยครับ"})
-    else:
-        use = 'bad_weather'
-        DATA.update({"valid": "ระวังฝนครับ"})
-    DATA.update(good_or_bad[1])
-    PAGE = use + '.html'
+    data = request.GET
+    SELECTED.update({"province": data.get('province'),
+                     "amphoe": data.get('amphoe')})
     return JsonResponse({})
 
 
 def weather_like(request):
-    return render(request, PAGE, DATA)
+    good_or_bad = weather_app.index(SELECTED.get("province"), SELECTED.get("amphoe"), CHOICE)
+    if good_or_bad[0] is True:
+        use = 'nice_weather'
+        data = {"valid": "ตากเลยครับ"}
+    else:
+        use = 'bad_weather'
+        data = {"valid": "ระวังฝนครับ"}
+    data.update(good_or_bad[1])
+    page = use + '.html'
+    return render(request, page, data)
