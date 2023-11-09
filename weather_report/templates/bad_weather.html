@@ -8,22 +8,24 @@
     <link rel="stylesheet" href="{% static 'lastpage.css' %}">
     <link rel="stylesheet" href="{% static 'font.css' %}">
 </head>
-<body>
-    <video style="height: 100%; position: absolute; right: 0; z-index: -999999;" autoplay loop muted playsinline>
-        <source src="{% static "vids/wet.mp4" %}" type="video/mp4">
-    </video>
-    <div class="province-amphoe-show">
-        <div class="province">{{valid}}</div>
-    </div>
-    <div class="data">
-        <li>{{hour_1}}</li>
-        <li>{{hour_2}}</li>
-        <li>{{hour_3}}</li>
-        <li>{{hour_4}}</li>
-        <li>{{hour_5}}</li>
-        <li>{{hour_6}}</li>
-        <li>{{hour_7}}</li>
-        <li>{{hour_8}}</li>
+<body style="background: rgba(199, 201, 107);">
+    <div class="container">
+        <video style="height: 100%; position: absolute; right: 0; z-index: -999999;" autoplay loop muted playsinline>
+            <source src="{% static "vids/wet.mp4" %}" type="video/mp4">
+        </video>
+        <div class="province-amphoe-show">
+            <div class="province">{{valid}}</div>
+        </div>
+        <div class="data">
+            <li>{{hour_1}}</li>
+            <li>{{hour_2}}</li>
+            <li>{{hour_3}}</li>
+            <li>{{hour_4}}</li>
+            <li>{{hour_5}}</li>
+            <li>{{hour_6}}</li>
+            <li>{{hour_7}}</li>
+            <li>{{hour_8}}</li>
+        </div>
     </div>
 </body>
 </html>
