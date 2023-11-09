@@ -22,11 +22,11 @@ img {
 }
 
 .shirt{
-
-}
-
-.tak{
-
+    right: 0%;
+    float: right;
+    margin-top: -10%;
+    margin-right: -24%;
+    position: absolute;
 }
 
 .container{
