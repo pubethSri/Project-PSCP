@@ -8,6 +8,7 @@ const letsGo = async () => {
             "amphoe": amphoe_mark
         }
     })
+    return true
 }
 
 window.onload = (event) => {
