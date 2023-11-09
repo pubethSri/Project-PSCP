@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+html {
+    height: 100%;
+}
+
+.bg {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.frame {
+    display: inline-flex;
+}
+
+.frame-left img {
+    z-index: 1;
+    height: 100vh;
+}
+
+.frame-right img {
+    z-index: -999;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 10vw;
+}
+
+.select {
+    z-index: 40;
+    top: 20%;
+    left: 10%;
+    position: absolute;
+
+}
+
+.select img {
+    height: 15vh;
+}
+
+.go-btn {
+    z-index: 40;
+    bottom: 2%;
+    right: 2%;
+    position: absolute;
+}
+
+.go-btn img{
+    height: 15vh;
+}
