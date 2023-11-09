@@ -57,7 +57,7 @@ def index(province, amphoe, choice): # Choice รับเป็น String ('IN'
         weather = getweathercond(process)
     except:
         print("An Error has occurred")
-        out = True
+        out = False
         weather = dict(("hour_" + str(i), "Error") for i in range(1, 9))
         weather.update({"valid": "หาจังหวัด/อำเภอ ไม่เจอ"})
     return [out, weather]
